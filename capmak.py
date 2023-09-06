@@ -4,6 +4,7 @@ import numpy as np
 import yfinance as yf
 import datetime
 import pandas_datareader as web
+import plotly.express as px
 #import capm_func  # importing plotly function python file
 
 st.set_page_config(page_title="CAPM" , page_icon="chart_with_upward_trend",layout = "wide")
@@ -30,10 +31,9 @@ with col2:
 try:
 
     #capm_func
-    import numpy as np
-    import plotly.express as px
+    
     def interactive_plot(df):
-    fig = px.line()
+        fig = px.line()
     for i in df.columns[1:]:
         fig.add_scatter(x = df['Date'], y = df[i], name = i)
     fig.update_layout(width = 450,margin = dict(l = 20, r = 20, t = 50 ,b = 20) , legend = dict(orientation = 'h',yanchor = 'bottom',
