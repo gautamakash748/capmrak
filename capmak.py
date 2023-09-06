@@ -18,7 +18,7 @@ with col2:
     year = st.number_input("Number of years",1,10)
 # downloading data for sp500
 
-import plotly.express as px
+
 
 
 # function to plot interactive plotly chart
@@ -30,6 +30,8 @@ import plotly.express as px
 try:
 
     #capm_func
+    import numpy as np
+    import plotly.express as px
     def interactive_plot(df):
     fig = px.line()
     for i in df.columns[1:]:
