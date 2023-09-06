@@ -22,7 +22,15 @@ import plotly.express as px
 
 
 # function to plot interactive plotly chart
-def interactive_plot(df):
+
+
+# function to calculate daily returns
+
+
+try:
+
+    #capm_func
+    def interactive_plot(df):
     fig = px.line()
     for i in df.columns[1:]:
         fig.add_scatter(x = df['Date'], y = df[i], name = i)
@@ -31,15 +39,15 @@ def interactive_plot(df):
     return fig
 
 # function to normalize the prices based on the initial price
-def normalize(df_2):
-    df = df_2.copy()
+    def normalize(df_2):
+        df = df_2.copy()
     for i in df.columns[1:]:
         df[i] = df[i]/df[i][0]
     return df
 
 # function to calculate daily returns
-def daily_return(df):
-    df_daily_return = df.copy()
+    def daily_return(df):
+        df_daily_return = df.copy()
     for  i in df.columns[1:]:
         for j in range(1,len(df)):
             df_daily_return[i][j] = ((df[i][j]-df[i][j-1])/df[i][j-1])*100
@@ -47,14 +55,14 @@ def daily_return(df):
     return df_daily_return
 
 # function to calculate beta
-def calculate_beta(stocks_daily_return , stock):
-    rm = stocks_daily_return['sp500'].mean()*252
+    def calculate_beta(stocks_daily_return , stock):
+        rm = stocks_daily_return['sp500'].mean()*252
 
     b ,a = np.polyfit(stocks_daily_return['sp500'],stocks_daily_return[stock],1)
     return b,a
 
 
-try:
+
 
 
 
